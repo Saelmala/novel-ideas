@@ -4,8 +4,7 @@ import type { Book, SearchResponse } from '../../../lib/openLibrary';
 const SEARCH_ENDPOINT = 'https://openlibrary.org/search.json';
 const RESULTS_PER_PAGE = 20;
 
-const USER_AGENT = 'novel-ideas/0.1 (sandramajelsa@gmail.com)';
-
+const USER_AGENT = "novel-ideas/0.1 (+https://github.com/Saelmala/novel-ideas)";
 const FIELDS = [
   'key',
   'title',
