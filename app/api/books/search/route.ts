@@ -18,7 +18,7 @@ interface OpenLibraryDoc {
   key: string;
   title: string;
   author_name?: string[];
-  first_published_year?: number;
+  first_publish_year?: number;
   cover_i?: number;
   edition_count?: number;
 }
@@ -27,7 +27,7 @@ const toBook = (doc: OpenLibraryDoc): Book => ({
   key: doc.key,
   title: doc.title,
   authors: doc.author_name ?? [],
-  firstPublishYear: doc.first_published_year ?? null,
+  firstPublishYear: doc.first_publish_year ?? null,
   coverId: doc.cover_i ?? null,
   editionCount: doc.edition_count ?? 0,
 });
@@ -56,7 +56,7 @@ export async function GET(request: Request) {
 
     if (!response.ok) {
       return NextResponse.json(
-        { error: `Open Library respoded with ${response.status}` },
+        { error: `Open Library responded with ${response.status}` },
         { status: 502 }
       );
     }
