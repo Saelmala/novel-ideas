@@ -1,11 +1,13 @@
+import { ReactNode } from 'react';
 import { Book, coverUrl, workUrl } from '../../../lib/openLibrary';
 import styles from './bookList.module.css';
 
 interface BookListProps {
   books: Book[];
+  renderActions?: (book: Book) => ReactNode;
 }
 
-export const BookList = ({ books }: BookListProps) => (
+export const BookList = ({ books, renderActions }: BookListProps) => (
   <ul className={styles.list}>
     {books.map((book) => {
       const cover = coverUrl(book.coverId);
@@ -27,11 +29,11 @@ export const BookList = ({ books }: BookListProps) => (
             {book.authors.length > 0 && <p className={styles.authors}>{book.authors.join(', ')}</p>}
 
             <p className={styles.detail}>
-              {book.firstPublishedYear
-                ? `First published ${book.firstPublishedYear}`
-                : 'Year unknown'}
+              {book.firstPublishYear ? `First published ${book.firstPublishYear}` : 'Year unknown'}
               {book.editionCount > 0 && ` · ${book.editionCount} editions`}
             </p>
+
+            {renderActions?.(book)}
           </div>
         </li>
       );

@@ -33,3 +33,4 @@ yarn-debug.log*
 
 # vercel
 .vercel
+novel-ideas.db
