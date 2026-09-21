@@ -25,6 +25,7 @@ export async function setShelf(book: Book, status: ShelfStatus) {
     });
 
   revalidatePath('/shelves');
+  revalidatePath('/');
 }
 
 export async function removeFromShelf(workKey: string) {
@@ -33,4 +34,5 @@ export async function removeFromShelf(workKey: string) {
     .where(and(eq(shelfEntry.userId, USER_ID), eq(shelfEntry.workKey, workKey)));
 
   revalidatePath('/shelves');
+  revalidatePath('/');
 }
