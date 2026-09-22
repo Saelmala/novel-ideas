@@ -1,4 +1,5 @@
 :root {
+  color-scheme: light dark;
   --bg: #fbfaf8;
   --surface: #ffffff;
   --text: #1c1a17;
@@ -7,6 +8,8 @@
   --accent: #8b3a2f;
   --accent-hover: #6f2d24;
   --accent-contrast: #ffffff;
+  --danger: #c62828;
+  --track: #e0e0e0;
 
   --radius: 8px;
   --space-1: 0.25rem;
@@ -26,6 +29,8 @@
     --accent: #d97a5f;
     --accent-hover: #e58f76;
     --accent-contrast: #17150f;
+    --danger: #ff9a8f;
+    --track: #3a3632;
   }
 }
 

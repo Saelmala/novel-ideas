@@ -4,7 +4,7 @@ import type { Book, SearchResponse } from '../../../lib/openLibrary';
 const SEARCH_ENDPOINT = 'https://openlibrary.org/search.json';
 const RESULTS_PER_PAGE = 20;
 
-const USER_AGENT = "novel-ideas/0.1 (+https://github.com/Saelmala/novel-ideas)";
+const USER_AGENT = 'novel-ideas/0.1 (+https://github.com/Saelmala/novel-ideas)';
 const FIELDS = [
   'key',
   'title',
@@ -18,7 +18,7 @@ interface OpenLibraryDoc {
   key: string;
   title: string;
   author_name?: string[];
-  first_published_year?: number;
+  first_publish_year?: number;
   cover_i?: number;
   edition_count?: number;
 }
@@ -27,7 +27,7 @@ const toBook = (doc: OpenLibraryDoc): Book => ({
   key: doc.key,
   title: doc.title,
   authors: doc.author_name ?? [],
-  firstPublishedYear: doc.first_published_year ?? null,
+  firstPublishYear: doc.first_publish_year ?? null,
   coverId: doc.cover_i ?? null,
   editionCount: doc.edition_count ?? 0,
 });
@@ -56,7 +56,7 @@ export async function GET(request: Request) {
 
     if (!response.ok) {
       return NextResponse.json(
-        { error: `Open Library respoded with ${response.status}` },
+        { error: `Open Library responded with ${response.status}` },
         { status: 502 }
       );
     }

@@ -2,7 +2,7 @@ export interface Book {
   key: string;
   title: string;
   authors: string[];
-  firstPublishedYear: number | null;
+  firstPublishYear: number | null;
   coverId: number | null;
   editionCount: number;
 }
