@@ -2,16 +2,16 @@
 
 import { useCallback, useRef, useState } from 'react';
 import { Book, SearchResponse } from '../../lib/openLibrary';
-import type { ShelfStatus } from '../../db/schema';
 import { SearchBar } from '../ui/searchBar/searchBar';
 import { BookList } from '../ui/bookList/bookList';
 import { ShelfPicker } from '../ui/shelfPicker/shelfPicker';
 import styles from '../../page.module.css';
+import type { ShelfState } from '../../db/queries';
 
 type Status = 'idle' | 'loading' | 'done' | 'error';
 
 interface BookSearchProps {
-  shelfMap: Record<string, ShelfStatus>;
+  shelfMap: Record<string, ShelfState>;
 }
 
 export const BookSearch = ({ shelfMap }: BookSearchProps) => {
@@ -64,7 +64,11 @@ export const BookSearch = ({ shelfMap }: BookSearchProps) => {
           <BookList
             books={books}
             renderActions={(book) => (
-              <ShelfPicker book={book} current={shelfMap[book.key] ?? null} />
+              <ShelfPicker
+                book={book}
+                current={shelfMap[book.key]?.status ?? null}
+                readAt={shelfMap[book.key]?.readAt ?? null}
+              />
             )}
           />
         </>

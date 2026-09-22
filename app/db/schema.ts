@@ -29,6 +29,18 @@ export const shelfEntry = sqliteTable(
       .notNull()
       .default(sql`current_timestamp`),
     editionCount: integer('edition_count').notNull().default(0),
+    readAt: text('read_at')
   },
   (table) => [uniqueIndex('shelf_entry_user_work').on(table.userId, table.workKey)]
+);
+
+export const readingChallenge = sqliteTable(
+  'reading_challenge', 
+  {
+    id: integer('id').primaryKey({autoIncrement: true}),
+    userId: text('user_id').notNull(),
+    year: integer('year').notNull(),
+    target: integer('target').notNull()
+  },
+  (table) => [uniqueIndex('reading_challenge_user_year').on(table.userId, table.year)]
 );

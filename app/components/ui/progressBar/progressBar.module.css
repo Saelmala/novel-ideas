@@ -1,0 +1,39 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+  
+  .label {
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+  }
+  
+  .track {
+    flex: 1;
+    block-size: 1.25rem;
+    background: var(--track);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .fill {
+    block-size: 100%;
+    background: var(--accent);
+    border-radius: inherit;
+    transition: inline-size 0.3s ease;
+  }
+  
+  @media (prefers-reduced-motion: reduce) {
+    .fill {
+      transition: none;
+    }
+  }
+  
+  .value {
+    min-inline-size: 4ch;
+    text-align: right;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    font-variant-numeric: tabular-nums;
+  }
